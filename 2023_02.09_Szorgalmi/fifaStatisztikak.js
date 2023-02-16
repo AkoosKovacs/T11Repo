@@ -73,4 +73,36 @@ function AtlagFolottiPontszamosCsapatokKiirasa(adatok,atlagPontszam){
 }
 
 document.write("<br>Az átlagpontszámnál több pontot elérő csapatok: "+AtlagFolottiPontszamosCsapatokKiirasa(fifaAdatok,atlagPontszam))
+
+
+/*--4.Feladat: Írja ki a legtöbbet javító csapat adatait!(Helyezés,csapat,pontszám)--*/
+document.write("4.Feladat: Írja ki a legtöbbet javító csapat adatait!(Helyezés,csapat,pontszám)")
+
+function LegtobbetJavitoCsapatKereses(adatok){
+	let max=0;
+    let maxIndex=0;
+    for(let i=0; i<adatok.length; i++){
+    	if(adatok[i].valtozas>max){max=adatok[i].valtozas; maxIndex=i}
+    }
+    return "A legtöbbet javító csapat: "+adatok[maxIndex].nev+", helyezés: "+adatok[maxIndex].helyezes+", pontszám: "+adatok[maxIndex].pontszam
+}
+
+document.write("<br>"+LegtobbetJavitoCsapatKereses(fifaAdatok))
+
+
+/*5.Feladat: Mondja meg, hogy Magyarország szerepel-e a ranglistán!Legyen univerzális!*/
+document.write("5.Feladat: Mondja meg, hogy Magyarország szerepel-e a ranglistán!Legyen univerzális!")
+
+let megadottOrszag=prompt("Adjon meg egy országot");
+
+function OrszagSzerepelE(adatok,orszag){
+	let szerepelE=false;
+	for(let i=0; i<adatok.length; i++){
+    	if(adatok[i].nev==orszag){szerepelE=true}
+    }
+    if(szerepelE==true){return "<br>A megadott ország("+orszag+") szerepel a listán"}
+    else{return "<br>A megadott ország("+orszag+") NEM szerepel a listán"}
+}
+
+document.write(OrszagSzerepelE(fifaAdatok,megadottOrszag)+"<hr>")
 </script>
