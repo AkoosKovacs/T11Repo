@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Színválasztó oldal</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+      }
+      #keveroFelulet {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 250px;
+        height: 200px;
+        padding: 10px;
+        border: 1px solid black;
+        box-shadow: 2px 2px 5px black;
+      }
+      #RGBkodMegjelenito {
+        font-size: 200px;
+      }
+
+      #hexaKodMegjelenito {
+        font-size: 200px;
+      }
+
+      #szinNev {
+        font-size: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="keveroFelulet">
+      <label for="redSet">Red(Piros)</label>
+      <input type="range" min="0" max="255" value="0" id="redSet" />
+      <p id="redValue">0</p>
+
+      <label for="greenSet">Green(Zöld)</label>
+      <input type="range" min="0" max="255" value="0" id="greenSet" />
+      <p id="greenValue">0</p>
+
+      <label for="blueredSet">Blue(Kék)</label>
+      <input type="range" min="0" max="255" value="0" id="blueSet" />
+      <p id="blueValue">0</p>
+    </div>
+    <div id="RGBkodMegjelenito">rgb(0,0,0);</div>
+    <div id="hexaKodMegjelenito">#000000</div>
+    <div id="szinNev">Black</div>
+  </body>
+  <script src="szinek.js"></script>
+  <script>
+    //Piros szín beállító
+    redSet.addEventListener("input", redValueChange);
+    function redValueChange() {
+      let newValue = document.querySelector("#redSet").value;
+      document.querySelector("#redValue").innerHTML = newValue;
+      SzinKevero(SzinKinyero());
+      szinkodRGB(SzinKinyero());
+      LathatoBetuszin(SzinKinyero());
+      RGBtoHexa(SzinKinyero());
+      SzinNevBeallito(RGBtoHexa(SzinKinyero()), szinek);
+    }
+
+    //Zöld szín beállító
+    greenSet.addEventListener("input", greenValueChange);
+    function greenValueChange() {
+      let newValue = document.querySelector("#greenSet").value;
+      document.querySelector("#greenValue").innerHTML = newValue;
+      SzinKevero(SzinKinyero());
+      szinkodRGB(SzinKinyero());
+      LathatoBetuszin(SzinKinyero());
+      RGBtoHexa(SzinKinyero());
+      SzinNevBeallito(RGBtoHexa(SzinKinyero()), szinek);
+    }
+
+    //Kék szín beállító
+    blueSet.addEventListener("input", blueValueChange);
+    function blueValueChange() {
+      let newValue = document.querySelector("#blueSet").value;
+      document.querySelector("#blueValue").innerHTML = newValue;
+      SzinKevero(SzinKinyero());
+      szinkodRGB(SzinKinyero());
+      LathatoBetuszin(SzinKinyero());
+      RGBtoHexa(SzinKinyero());
+      SzinNevBeallito(RGBtoHexa(SzinKinyero()), szinek);
+    }
+
+    function SzinKinyero() {
+      let r = document.querySelector("#redValue").innerHTML;
+      let g = document.querySelector("#greenValue").innerHTML;
+      let b = document.querySelector("#blueValue").innerHTML;
+      let kinyertSzin = { red: r, green: g, blue: b };
+      return kinyertSzin;
+    }
+    function SzinKevero(color) {
+      let setColor =
+        "rgb(" + color.red + "," + color.green + "," + color.blue + ")";
+      document.body.style.backgroundColor = setColor;
+    }
+    function szinkodRGB(color) {
+      document.querySelector("#RGBkodMegjelenito").innerHTML =
+        "rgb(" + color.red + "," + color.green + "," + color.blue + ")";
+    }
+    function LathatoBetuszin(color) {
+      if (color.red > 125 || color.green > 125 || color.blue > 125) {
+        document.body.style.color = "black";
+      } else {
+        document.body.style.color = "white";
+      }
+    }
+
+    function RGBtoHexa(color) {
+      let hexaKod =
+        "#" +
+        ((1 << 24) | (color.red << 16) | (color.green << 8) | color.blue)
+          .toString(16)
+          .slice(1);
+
+      document.querySelector("#hexaKodMegjelenito").innerHTML = hexaKod;
+      return hexaKod;
+    }
+
+    function SzinNevBeallito(hexaKod, szinNevek) {
+      for (let i = 0; i < szinNevek.length; i++) {
+        if (hexaKod == szinNevek[i].hex) {
+          document.querySelector("#szinNev").innerHTML = szinNevek[i].name;
+        }
+      }
+    }
+  </script>
+</html>
