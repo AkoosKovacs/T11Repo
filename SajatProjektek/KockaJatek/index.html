@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kockadobás Játék</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Kockadobás Játék</h1>
+    <p>
+      A játék a következő képpen zajlik: Először te, majd a gép dob 2db
+      dobókockával.A dobott számok összege hozzáadódik a pontszámhoz.Ha azonos
+      értékeket sikerült dobni a kockákkal, azért dupla pont jár.10 dobásig tart
+      a játék, az nyer, akinek a végén több pontja lett!Sok szerencsét!:)
+    </p>
+
+    <div id="jatekosTarolo" class="tarolok">
+      <h2>Játékos</h2>
+      <h3>Pontszám: <span id="jatekosPontszam">0</span></h3>
+      <button id="jatekosDobasGomb">Dobás!</button>
+      <div id="jatekosDobasTarolo" class="dobasTarolok">
+        <div class="kockak" id="jatekosElsoKocka"></div>
+        <div id="jatekosPluszJel" class="jelek">+</div>
+        <div class="kockak" id="jatekosMasodikKocka"></div>
+        <div id="jatekosEgyenlosegJel" class="jelek">=</div>
+        <div id="jatekosDobasOsszeg" class="dobasOsszegek">2</div>
+      </div>
+      <h1 class="nyertesFeliratok" id="jatekosNyertesFelirat">Nyertes!</h1>
+    </div>
+
+    <div id="kozepsoTarolo">
+      <h3>Kör: <span id="korSzamlalo">0</span></h3>
+      <h1>VS</h1>
+    </div>
+
+    <div id="gepTarolo" class="tarolok">
+      <h2>Gép</h2>
+      <h3>Pontszám: <span id="gepPontszam">0</span></h3>
+      <button id="gepDobasGomb" disabled>Dobás!</button>
+      <div id="gepDobasTarolo" class="dobasTarolok">
+        <div class="kockak" id="gepElsoKocka"></div>
+        <div id="gepPluszJel" class="jelek">+</div>
+        <div class="kockak" id="gepMasodikKocka"></div>
+        <div id="gepEgyenlosegJel" class="jelek">=</div>
+        <div id="gepDobasOsszeg" class="dobasOsszegek">2</div>
+      </div>
+      <h1 class="nyertesFeliratok" id="gepNyertesFelirat">Nyertes!</h1>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
