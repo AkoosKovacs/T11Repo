@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Felmérés</title>
+    <style>
+      p {
+        display: inline-block;
+      }
+
+      #kirajzoltNegyzet {
+        display: none;
+      }
+
+      #bujkaloMacska {
+        width: 100px;
+        opacity: 1;
+        animation-name: "Megjelenito";
+        animation-duration: 5s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes Eltunteto {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes Megjelenito {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <span>1.Feladat:<br /></span>
+    <input type="text" id="szovegBevitel" />
+    <p id="karakterszam">0</p>
+    <hr />
+
+    <span>2.Feladat:<br /></span>
+    <label for="xKoordinata">Adja meg az X koordináta értékét!</label>
+    <input type="number" id="xKoordinata" name="xKoordinata" value="100" />
+    <label for="yKoordinata">Adja meg az Y koordináta értékét!</label>
+    <input type="number" id="yKoordinata" name="yKoordinata" value="100" />
+    <button id="kirajzolGomb">Kirajzol!</button>
+    <div id="kirajzoltNegyzet"></div>
+    <hr />
+
+    <span>3.Feladat:<br /></span>
+    <button id="eltuntetoGomb">TŰNJ EL!</button>
+    <img
+      src="hidingCat.jpg"
+      alt="bujkaloMacska"
+      title="bujkaloMacska"
+      id="bujkaloMacska"
+    />
+    <hr />
+
+    <span>4.Feladat:<br /></span>
+    <div id="hibauzenet"></div>
+    <label for="email">E-mail:</label>
+    <input type="email" name="email" id="email" />
+    <label for="emailMegerosites">E-mail megerősítése:</label>
+    <input type="email" name="emailMegerosites" id="emailMegerosites" />
+    <br />
+    <button id="ellenorzesGomb">Ellenőrzés</button>
+    <script>
+      /*--------------------------------1.Feladat--------------------------------*/
+      szovegBevitel.addEventListener("change", SzovegHosszSzamito);
+      function SzovegHosszSzamito() {
+        let bevittSzoveg = document.querySelector("#szovegBevitel").value;
+        document.querySelector("#karakterszam").innerHTML = bevittSzoveg.length;
+      }
+      /*--------------------------------2.Feladat--------------------------------*/
+      kirajzolGomb.addEventListener("click", NegyzetKirajzolo);
+      function NegyzetKirajzolo() {
+        let negyzet = document.querySelector("#kirajzoltNegyzet");
+        negyzet.style.width =
+          document.querySelector("#xKoordinata").value + "px";
+        negyzet.style.height =
+          document.querySelector("#yKoordinata").value + "px";
+        negyzet.style.border = "1px solid black";
+        negyzet.style.display = "block";
+      }
+      /*--------------------------------3.Feladat--------------------------------*/
+      eltuntetoGomb.addEventListener("click", MacskaEltunteto);
+      function MacskaEltunteto() {
+        let allapot =
+          document.querySelector("#bujkaloMacska").style.animationName;
+        if (allapot != "Eltunteto") {
+          document.querySelector("#bujkaloMacska").style.animationName =
+            "Eltunteto";
+          document.querySelector("#eltuntetoGomb").innerHTML =
+            "Najó,gyere vissza!";
+        } else {
+          document.querySelector("#bujkaloMacska").style.animationName =
+            "Megjelenito";
+
+          document.querySelector("#eltuntetoGomb").innerHTML = "TŰNJ EL!";
+        }
+      }
+      /*--------------------------------4.Feladat--------------------------------*/
+      ellenorzesGomb.addEventListener("click", EmailEllenorzes);
+      function EmailEllenorzes() {
+        let hibauzenetDoboz = document.querySelector("#hibauzenet");
+        let emailMezo = document.querySelector("#email").value;
+        let emailMegerositesMezo =
+          document.querySelector("#emailMegerosites").value;
+        let regex = /^[0-9a-z\.-]+@([0-9a-z-]+\.)+[a-z]{2,4}$/i;
+
+        if (emailMezo == null && emailMegerositesMezo == null) {
+          hibauzenetDoboz.innerHTML = "Nincs kitöltve egyik mező sem!";
+        } else if (emailMezo == null) {
+          hibauzenetDoboz = "Nincs kitöltve az e-mail mező!";
+        } else if (emailMegerositesMezo == undefined) {
+          hibauzenetDoboz = "Nincs kitöltve az e-mail megerősítése mező!";
+        } else if (emailMezo != emailMegerositesMezo) {
+          hibauzenetDoboz = "A kér mező tartalma nem egyezik!";
+        } else if (
+          regex.test(emailMezo) == false ||
+          regex.test(emailMegerositesMezo) == false
+        ) {
+          hibauzenetDoboz = "Nem megfelelő az e-mail cím formátuma!";
+        } else {
+          hibauzenetDoboz = "Adatok rögzítése sikeres!";
+        }
+      }
+    </script>
+  </body>
+</html>
