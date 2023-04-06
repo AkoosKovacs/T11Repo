@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Feladatsor</title>
+    <style>
+      #megjElrNegyzet {
+        height: 100px;
+        width: 100px;
+        background-color: blue;
+        border: 1px solid black;
+        box-shadow: 2px 2px 2px 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="button" value="Megjelenítés" id="megjelenitesGomb" />
+    <input type="button" value="Elrejtés" id="elrejtesGomb" />
+    <div id="megjElrNegyzet"></div>
+    <hr />
+
+    <input type="text" id="szovegMezo" />
+    <p id="szovegKarakterMegjelenito">0</p>
+    <hr />
+
+    <input type="text" id="rejtettSzoveg" />
+    <input
+      type="button"
+      value="Szöveg megjelenítése"
+      id="szovegMegjelenitoGomb"
+    />
+    <input type="button" value="Szöveg elrejtése" id="szovegElrejtoGomb" />
+    <hr />
+
+    <input type="number" id="vizHomerseklet" min="-200" max="200" value="0" />
+    <p id="vizHalmazallapot">víz</p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#elrejtesGomb").click(function () {
+          $("#megjElrNegyzet").fadeOut(3000);
+        });
+
+        $("#megjelenitesGomb").click(function () {
+          $("#megjElrNegyzet").fadeIn(3000);
+        });
+        /*-----------------------------------------------------------------------------------------------------------------------*/
+        $("#szovegMezo").keyup(function () {
+          $("#szovegKarakterMegjelenito").text($("#szovegMezo").val().length);
+        });
+        /*------------------------------------------------------------------------------------------------------------------------*/
+        $("#szovegMegjelenitoGomb").click(function () {
+          $("#rejtettSzoveg").attr("type", "text");
+        });
+
+        $("#szovegElrejtoGomb").click(function () {
+          $("#rejtettSzoveg").attr("type", "password");
+        });
+        /*------------------------------------------------------------------------------------------------------------------------*/
+        $("#vizHomerseklet").keyup(function () {
+          if ($("#vizHomerseklet").val() > 100) {
+            $("#vizHalmazallapot").text("gőz");
+          } else if ($("#vizHomerseklet").val() < 0) {
+            $("#vizHalmazallapot").text("jég");
+          } else {
+            $("#vizHalmazallapot").text("víz");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
