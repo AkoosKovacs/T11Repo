@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klikkelős játék</title>
+    <link rel="stylesheet" href="klikkelo.css">
+</head>
+<body>
+    <div id="tarolo">
+        <div id="ugraloFelirat">Kattints Ide!</div>
+    </div>
+    
+    <div id="szamlalo">0</div>
+
+    <div id="uzenet">Cél: 10 pont! Sok sikert! ;)</div>
+
+    <script>
+ugraloFelirat.addEventListener("click",Szamlalo);
+ugraloFelirat.addEventListener("click",Nehezites);
+ugraloFelirat.addEventListener("click",Mozgas);
+
+function Szamlalo(){
+    let klikkSzam=Number(document.querySelector("#szamlalo").innerHTML)+1;
+    document.querySelector("#szamlalo").innerHTML=klikkSzam;
+    }
+
+
+    let sebesseg=1100;
+    let transition=1.1;
+    let meret=110;
+    let betuMeret=20;
+
+
+function Nehezites(){
+    if(sebesseg!=100){sebesseg-=100;}
+    console.log("Sebesség: "+sebesseg);
+        
+        if(transition!=0.1){transition-=0.1;}
+        document.querySelector("#ugraloFelirat").style.transition=transition+"s linear";
+
+        if(meret!=10){meret-=10;}
+        document.querySelector("#ugraloFelirat").style.width=meret+"px";
+        document.querySelector("#ugraloFelirat").style.height=meret+"px";
+        document.querySelector("#ugraloFelirat").style.lineHeight=meret+"px";
+
+        if(betuMeret!=2){betuMeret-=2;}
+        document.querySelector("#ugraloFelirat").style.fontSize=betuMeret+"px";
+}
+
+function Mozgas(){
+    var interval = setInterval(function() {
+        var div = document.querySelector("#ugraloFelirat");
+        let randomTop=Math.floor( Math.random()*683);
+        let randomLeft=Math.floor( Math.random()*1340);
+        div.style.top =(randomTop) + "px";
+        div.style.left =(randomLeft)+ "px"; 
+    },
+        sebesseg);
+}
+
+    
+    </script>
+</body>
+</html>

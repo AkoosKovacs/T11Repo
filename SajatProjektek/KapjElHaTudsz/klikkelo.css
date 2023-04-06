@@ -1,0 +1,53 @@
+#tarolo{
+    width: 1500px;
+    height: 843px;
+    position: relative;
+    top:100%;
+    left:50%;
+    transform: translate(-50%);
+    border:1px solid black;
+    background-color: lightblue;
+}
+
+#ugraloFelirat{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width: 110px;
+    height: 110px;
+    font-size: 20px;
+    padding:30px;            
+    text-align:center;
+    line-height: 110px;
+    background-color: red;
+    font-weight: bold;
+    border-radius:50%;
+    border:1px solid black;
+    box-shadow: 1px 1px 1px 1px;
+}
+
+#szamlalo{
+    color:white;
+    position: fixed;
+    top:8px;
+    left:50%;
+    width:50px;
+    transform:translate(-25px);
+    text-align: center;
+    background-color: rgba(0,0,0,0.9);
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+}
+
+#uzenet{
+    position: absolute;
+    height: 50px;
+    width: 500px;
+    top:3%;
+    left:50%;
+    transform: translate(-50%);
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    
+}

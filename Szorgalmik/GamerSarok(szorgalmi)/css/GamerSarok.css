@@ -1,0 +1,118 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-image: url("../img/background.jpg");
+    background-size:2000px;
+}
+
+@font-face {
+    font-family: Vampire;
+    src: url(../font/Vampire\ Wars.ttf);
+}
+
+h1 {
+    position: absolute;
+    font-size: 5vw;
+    font-family: "Vampire";
+    top: 3%;
+    left: 49%;
+    transform: translate(-49%);
+    color: black;
+    text-shadow: 0 0 5px #fff, 0 0 30px #6b03fc, 0 0 40px #6b03fc, 0 0 50px #6b03fc, 0 0 60px #6b03fc, 0 0 70px #6b03fc;
+    animation-name: textGlow;
+    animation-duration:1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+}
+
+
+@keyframes textGlow {
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 30px #6b03fc, 0 0 40px #6b03fc, 0 0 50px #6b03fc, 0 0 60px #6b03fc, 0 0 70px #6b03fc, 0 0 80px #6b03fc;
+    }
+  }
+
+#monitor {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../img/monitor.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 43vw;
+    width: 104.5vw;
+    height: 52vw;
+}
+
+#monitorGlow{
+    position: absolute;
+    top:48%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:42vw;
+    height: 23.6vw;
+    box-shadow: 0px 0px 25px 10px #6b03fc;
+    animation-name: monitorGlow;
+    animation-duration:3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+}
+
+@keyframes monitorGlow{
+    to{
+        box-shadow: 0px 0px 50px 25px #6b03fc;
+    }
+}
+
+.container {
+    position: absolute;
+    width: 41.5%;
+    height: 44.5%;
+}
+
+.carousel {
+    position: absolute;
+    top: 57.1%;
+    left: 72.2%;
+    width: 41.8vw;
+    height: 22vw;
+}
+
+.item img {
+    height: 23.5vw !important;
+    width: 70vW !important;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    font-size: 24px;
+    color: white;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    opacity: 0.4;
+    border: 3px solid;
+    border-image: linear-gradient(45deg, gold, deeppink) 1;
+    clip-path: inset(0px round 10px);
+    animation: huerotate 6s infinite linear;
+    filter: hue-rotate(360deg);
+}
+
+@keyframes huerotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
